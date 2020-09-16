@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.scss";
+import ShortlyBuilder from "./components/ShortlyBuilder";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header >
+        <div className='logo'>Bely your URL</div>
+        <div><a href="https://github.com" title="Github Code"><img src="https://img.icons8.com/fluent/48/000000/github.png" alt="Github Icon"/></a></div>
       </header>
+      <ShortlyBuilder />
+      <footer>
+        Made with <span role='img' aria-label="heart">💚</span> by <a href='https://neriis.com' className='gold'>@nerisina</a>
+      </footer>
     </div>
   );
 }

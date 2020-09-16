@@ -1,0 +1,109 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Vollkorn&family=Ranchers&display=swap');
+
+// General layout 
+h1, h2, h3, h4, h5 {
+  font-family: 'Vollkorn', serif;
+  font-style: normal;
+  font-weight: 500;
+}
+h1{
+  font-size: 48px;line-height: 83px;
+}
+h3{
+  font-size: 32px;
+  line-height: 38px;
+}
+.container{
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  background-color: #FBF1A9;
+  color: #F67C6D; 
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 0 24px;
+  background: #fff;
+  .logo{
+    font-family: 'Ranchers', cursive;
+  }
+}
+main{
+  display: grid;
+  place-items: center;
+}
+footer{
+  text-align: center;
+}
+
+// Form
+.form__group{
+  display: grid;
+  grid-template-columns: 1fr .6fr;
+  column-gap: 18px;
+  row-gap: 14px;
+  justify-content: space-between;
+  margin-bottom: 18px;;
+}
+.label__txt{
+  font-family: 'Karla', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 30px;
+  color: #444444;
+}
+.input__url{
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0px;
+  display: block;
+  width: 100%;
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  padding: 18px 24px;
+  &:focus{
+    border-radius: 0px;
+  }
+  &::placeholder{
+    color: rgba(0, 0, 0, 0.87);
+    opacity: 0.3;
+  }
+}
+
+// Buttons
+.btn{
+  border: 1px solid #F67C6D;
+  background-color:#F67C6D;
+  color: #fff;
+  display: inline-block;
+  font-family: Karla;
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+  &__primary{
+    padding: 20px 45px;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  &:hover{
+    background-color: #fff;
+    color: #F67C6D;
+    border: 1px solid #F67C6D;
+  }
+}
+
+
+// URL States
+.url__shorted{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
