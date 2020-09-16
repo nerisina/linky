@@ -42,17 +42,15 @@ class ShortlyBuilder extends Component {
         const {error, urls} = this.state;
         let urlsList;
         if(!error){
-            urlsList = <div className="list">
-                <h3>List of URLS</h3>
+            urlsList = 
+                <div className="urls">
                     {urls.map((url, i) => (
-                    <UrlsList key={i} slug={url.slug} url={url.url} shortUrl={url.short_url} delete={this.deletePostHandler} expire={this.state.expire}/>
-                ))}
+                        <UrlsList key={i} slug={url.slug} url={url.url} shortUrl={url.short_url} delete={this.deletePostHandler} expire={this.state.expire}/>
+                    ))}
                 </div>;
         }
         //
 
-        
-     
         const success = this.state.error ? this.state.error.message : '';
 
         return (

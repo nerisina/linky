@@ -59,7 +59,7 @@ footer{
 }
 .input__url{
   box-sizing: border-box;
-  border: none;
+  border: 1px solid pink;
   border-radius: 0px;
   display: block;
   width: 100%;
@@ -100,10 +100,6 @@ footer{
   }
 }
 
+//list of elements
 
-// URL States
-.url__shorted{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
