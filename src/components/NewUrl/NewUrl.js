@@ -9,47 +9,63 @@ class NewUrl extends Component {
         error: false,
         urlShorted: false,
         loading: false,
+        copiedText: 'Copy this'
     }
     postDataHandler = () => {
         const { url, slug } = this.state;
-        this.setState({ loading: true })
-
-        let postUrl;
-        if(this.state.slug){
-            postUrl = `/links/?url=${url}/&slug=${slug}`;
-        }else{
-            postUrl = `/links/?url=${url}`;
+        const regex = new RegExp(/^(ftp|http|https):\/\/[^ "]+$/);
+        this.setState({ loading: true });
+        if (!url) {
+            this.setState({ error: <p>Please enter an URL<span role='img' aria-label='Screaming emojii'>👆</span></p>, loading: false });
+            return false;
+        } 
+        else if (!url.match(regex)) {
+                this.setState({ error: <p>Check how you wrote the url - it shoud be something like: https://google.com <span role='img' aria-label='Screaming emojii'>👓</span></p>, loading: false })
+                return false;
         }
-
-        axios.post(postUrl)
-        .then((response) => {
-            this.setState({ urlShorted: response.data.short_url, loading: false, })
-        })
-        .catch((err) => {
-            this.setState({ error: err })
-        });
+        else{
+            let postUrl;
+            if(this.state.slug){
+                postUrl = `/links/?url=${url}/&slug=${slug}`;
+            }else{
+                postUrl = `/links/?url=${url}`;
+            }
+            axios.post(postUrl)
+            .then((response) => {
+                this.setState({ urlShorted: response.data.short_url, loading: false, error: false })
+            })
+            .catch((err) => {
+                this.setState({ error: err })
+            });
+        }
+    }
+    copyTextHandler = (e) => {
+        this.input.select();
+        document.execCommand('copy');
+        this.input.focus();
+        this.setState({ copiedText: 'Copied 📝'})
     }
     
     render(){
         const urlConverted = this.state.urlShorted ? (
             <span className='url__shorted'>
-                {this.state.urlShorted}
-                <button className='btn btn__small'>Copy this</button>
+                <input type='text' value={this.state.urlShorted} className='input__url' ref={(input) => this.input = input} />
+                <button className='btn btn__small' onClick={this.copyTextHandler}>{this.state.copiedText}</button>
             </span>
         ) : (
-                'Enter your url'
+                <h1>Enter URL</h1>
             );
         const loader = this.state.loading ? <Spinner /> : '';
     return (
-        <div >
+        <section>
             {loader}
-            <h1>{urlConverted}</h1>
+            {urlConverted}
             <div className="form">
                 <div className='form__group'>
                     <div>
                         <label className='label__txt' htmlFor='urlInput'>Enter URL</label>
                         <input id='urlInput' name='urlToShort' type='url' className='input__url' value={this.state.url}  onChange={(event) => this.setState({url: event.target.value})} placeholder='ex: https://google.com'/>
-                        {this.state.error ? <span className='error'>Noup, wrong url <span role='img' aria-label='Screaming emojii'>😱</span></span> : ''}
+                        {this.state.error ? <span className='error'>{this.state.error} </span> : ''}
                     </div>
                     <div>
                         <label className='label__txt' htmlFor='slugInput'>Optional Slug</label>
@@ -58,7 +74,7 @@ class NewUrl extends Component {
                 </div>
                 <button className='btn btn__primary' onClick={this.postDataHandler}>Shorten URL</button>
             </div>
-        </div>
+        </section>
     )
 }
 }

@@ -43,11 +43,11 @@ class ShortlyBuilder extends Component {
         let urlsList;
         if(!error){
             urlsList = 
-                <div className="urls">
+                <section className="urls">
                     {urls.map((url, i) => (
                         <UrlsList key={i} slug={url.slug} url={url.url} shortUrl={url.short_url} delete={this.deletePostHandler} expire={this.state.expire}/>
                     ))}
-                </div>;
+                </section>;
         }
         //
 

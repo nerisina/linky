@@ -2,10 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Vollkorn&family=Ranchers&display=swap');
 
 // General layout 
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0px;
+}
 h1, h2, h3, h4, h5 {
   font-family: 'Vollkorn', serif;
   font-style: normal;
   font-weight: 500;
+  margin: 0;
 }
 h1{
   font-size: 48px;line-height: 83px;
@@ -14,20 +22,26 @@ h3{
   font-size: 32px;
   line-height: 38px;
 }
+a{
+  color: pink;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
 .container{
   display: grid;
   grid-template-rows: auto 1fr auto;
-  height: 100vh;
   background-color: #FBF1A9;
   color: #F67C6D; 
+  min-height: 100vh;
 }
 header{
   display: flex;
   justify-content: space-between;
   align-content: center;
   align-items: center;
-  padding: 0 24px;
-  background: #fff;
+  padding: 10px 24px;
   .logo{
     font-family: 'Ranchers', cursive;
   }
@@ -42,8 +56,12 @@ main{
   display: grid;
   place-items: center;
 }
+section{
+  width: 400px;
+}
 footer{
   text-align: center;
+  height: 30px;
 }
 
 // Form
