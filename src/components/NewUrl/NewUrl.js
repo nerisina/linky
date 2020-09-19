@@ -69,10 +69,10 @@ class NewUrl extends Component {
                     </div>
                     <div>
                         <label className='label__txt' htmlFor='slugInput'>Optional Slug</label>
-                        <input className='input__url' if='slugInput' placeholder='x1z' value={this.state.slug}  onChange={(event) => this.setState({slug: event.target.value})}  />
+                        <input className='input__url' name='slugInput' id='slugInput' if='slugInput' placeholder='x1z' value={this.state.slug}  onChange={(event) => this.setState({slug: event.target.value})}  />
                     </div>
                 </div>
-                <button className='btn btn__primary' onClick={this.postDataHandler}>Shorten URL</button>
+                <button type='submit' className='btn btn__primary' onClick={this.postDataHandler}>Shorten URL</button>
             </div>
         </section>
     )
