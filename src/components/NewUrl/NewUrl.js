@@ -33,6 +33,7 @@ class NewUrl extends Component {
             axios.post(postUrl)
             .then((response) => {
                 this.setState({ urlShorted: response.data.short_url, loading: false, error: false })
+                this.props.onNewUrl(response.data);            
             })
             .catch((err) => {
                 this.setState({ error: err })
@@ -72,7 +73,7 @@ class NewUrl extends Component {
                         <input className='input__url' name='slugInput' id='slugInput' if='slugInput' placeholder='x1z' value={this.state.slug}  onChange={(event) => this.setState({slug: event.target.value})}  />
                     </div>
                 </div>
-                <button type='submit' className='btn btn__primary' onClick={this.postDataHandler}>Shorten URL</button>
+                <button className='btn btn__primary' onClick={this.postDataHandler}>URL</button>
             </div>
         </section>
     )

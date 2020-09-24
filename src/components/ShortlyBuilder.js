@@ -56,7 +56,8 @@ class ShortlyBuilder extends Component {
         return (
             <main>
                     {success}
-                    <NewUrl />
+                    {/* <NewUrl /> */}
+                    <NewUrl onNewUrl={url => this.setState({...this.state, urls: [url, ...this.state.urls]})} />
                     {urlsList}
             </main>
         );

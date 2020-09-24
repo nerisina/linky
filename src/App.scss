@@ -28,6 +28,9 @@ a{
   &:hover{
     text-decoration: underline;
   }
+  &.active{
+    color: #FBF1A9;
+  }
 }
 .container{
   display: grid;
